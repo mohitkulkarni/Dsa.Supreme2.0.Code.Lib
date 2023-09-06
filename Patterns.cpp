@@ -96,7 +96,6 @@ void butterfly(int n){
     }
     cout<<endl;
   }
-  
 }
 
 void floyedTrianagle(int n){
@@ -661,6 +660,7 @@ void fullPyraidFirst(int n){
 }
 
 void hollowHalfPyramid(int n){
+
 
 
     /*
