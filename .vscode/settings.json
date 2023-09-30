@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "*.ejs": "html",
-        "format": "cpp",
-        "ostream": "cpp",
-        "vector": "cpp"
-    }
-}
