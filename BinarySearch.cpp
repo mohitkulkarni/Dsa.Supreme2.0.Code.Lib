@@ -1,7 +1,35 @@
 #include<iostream>
 using namespace std;
 
+int findMissingElement(int arr[], int n) {
+  int s = 0;
+  int e = n-1;
+  int mid = s + (e-s)/2;
+  int ans = -1;
 
+  while(s <= e) {
+    int diff = arr[mid] - mid;
+
+    if(diff == 1) {
+      //right me jao
+      s = mid+1;
+    }
+    else {
+      //ans store
+      ans = mid;
+      //left me jao
+      e = mid - 1;
+    }
+     mid = s + (e-s)/2;
+  }
+
+
+  //HW -> How can we remove this, by modifying the above logic
+  if(ans +1 == 0)
+    return n+1;
+  
+  return ans+1;
+}
 
 void findFirstAndLast(int arr[], int n , int target){
     int start = 0;
@@ -80,10 +108,17 @@ void findTarget(int arr[], int n , int target){
 }
 
 int main(){ 
-    int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
-    int n = sizeof(arr) / sizeof(int);
-    int x = 8;
-    findFirstAndLast(arr, n, x);
+
+
+int arr[] = {1,2,3,4,5,6,7,8};
+  //int target = 30;
+  int n =8;
+
+  cout<<"Missing element is: " << findMissingElement(arr, n);
+//     int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
+//     int n = sizeof(arr) / sizeof(int);
+//     int x = 8;
+//     findFirstAndLast(arr, n, x);
 
     return 0;
 }
