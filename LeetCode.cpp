@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 #include<vector>
+#include <map>
+#include <algorithm>
 
 
 int reverse(int x) {
@@ -173,50 +175,78 @@ vector<int> spiralOrder(vector<vector<int>>& matrix) {
 }
 
 
-int main(){
-    string s = "deeedbbcccbdaa";
-    int k = 3;
-    int i = 0;
-    string ans = "";
-    int count = 0;
-    while(i<s.length()){
-        if(count == k){
-            int j = 0;
-            while(j<k){
-                ans.pop_back();
-                j++;
+
+string reverseOnlyLetters(string s) {
+        int start = 0;
+        int end = s.length()-1;
+        while(start<=end){
+            if(!isalpha(s[start])){
+                start++;
+            }else if (isalpha(s[end])){
+                end--;
+            }else{
+                swap(s[start],s[end]);
+                cout<<s<<endl;
+                start++;
+                end--;
             }
-            count = 1;
         }
-
-        if(ans.length()>0 && ans.back()==s[i]){
-            // make a count
-            ans.push_back(s[i]);
-            count++;
-        }
-        else{
-            ans.push_back(s[i]);
-            count=1;
-        }
-        i++;
-
+        return s;
     }
-    cout<<ans;
 
 
 
+int main(){
+        vector<string> strs = {"eat","tea","tan","ate","nat","bat"};
+        vector<vector<string>> groups;
+        map<int[], vector<string>> map ;
 
+        int hash[256] = {0};
+        
+        for(auto s : strs){
+            string str = s;
+            sort(str.begin(),str.end());
+            map[str].push_back(s);
+        }
+        
 
+        for(auto itr = map.begin(); itr != map.end(); itr++){
+            groups.push_back(itr->second);
+        }
+        cout<<groups;
 
+    // cout<<reverseOnlyLetters("ab-cd")<<endl;
+    // char a[10] = "babbar";
+    // char* cptr = a;
+    
+    // string s = "deeedbbcccbdaa";
+    // int k = 3;
+    // int i = 0;
+    // string ans = "";
+    // int count = 0;
+    // while(i<s.length()){
+    //     if(count == k){
+    //         int j = 0;
+    //         while(j<k){
+    //             ans.pop_back();
+    //             j++;
+    //         }
+    //         count = 1;
+    //     }
 
+    //     if(ans.length()>0 && ans.back()==s[i]){
+    //         // make a count
+    //         ans.push_back(s[i]);
+    //         count++;
+    //     }
+    //     else{
+    //         ans.push_back(s[i]);
+    //         count=1;
+    //     }
+    //     i++;
 
-
-
-
-
-
-
-
+    // }
+    // cout<<ans;
     // string ans = "";
     // int index = 0;
     // while(index<ans.length()){
